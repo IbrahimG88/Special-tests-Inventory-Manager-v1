@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Select from "react-select";
 import { fetcher } from "../lib/fetcher";
+import ListTable from "../components/mui-table-select";
 
 export default function AddSpecialTest() {
   const [specialTestName, setSpecialTestName] = useState("");
@@ -55,6 +56,7 @@ export default function AddSpecialTest() {
         isSearchable
         className="border border-gray-300 rounded-md shadow-sm p-2"
       />
+      <ListTable testsList={testsList} />
 
       <button
         type="submit"

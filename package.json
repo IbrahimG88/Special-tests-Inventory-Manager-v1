@@ -9,13 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@fontsource/roboto": "^4.5.8",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.12.0",
+    "@mui/styled-engine-sc": "^5.12.0",
+    "@mui/x-data-grid": "^6.1.0",
     "dot-env": "^0.0.1",
     "fetch": "^1.1.0",
+    "fuse.js": "^6.6.2",
     "mongodb": "^5.2.0",
     "next": "13.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-select": "^5.7.2"
+    "react-select": "^5.7.2",
+    "styled-components": "^5.3.9"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",

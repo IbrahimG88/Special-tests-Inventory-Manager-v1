@@ -1,9 +1,10 @@
+//you can ignore this file embedded in another component
 import * as React from "react";
 
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { useState } from "react";
 
-export default function ListTable(props) {
+export default function ListTable() {
   const testsList = props.testsList;
 
   // select the rows item.id

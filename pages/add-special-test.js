@@ -5,7 +5,7 @@ import * as React from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 
 export default function AddSpecialTest() {
-  const [specialTestName, setSpecialTestName] = useState("");
+  const [testName, setTestName] = useState("");
 
   const [testsList, setTestsList] = useState([]);
   // select the rows item.id
@@ -36,7 +36,7 @@ export default function AddSpecialTest() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(specialTestName);
+    console.log(testName);
     const filteredTests = testsList.filter((test) =>
       rowSelectionModel.includes(test.id)
     );
@@ -44,7 +44,7 @@ export default function AddSpecialTest() {
     setSelectedTests(filteredTests);
 
     const specialTestObject = {
-      specialTestName: specialTestName,
+      testName: testName,
       testConnections: filteredTests,
     };
 
@@ -85,8 +85,8 @@ export default function AddSpecialTest() {
       <input
         type="text"
         id="special-test-name"
-        value={specialTestName}
-        onChange={(e) => setSpecialTestName(e.target.value)}
+        value={testName}
+        onChange={(e) => setTestName(e.target.value)}
         className="border border-gray-300 rounded-md shadow-sm p-2"
       />
 

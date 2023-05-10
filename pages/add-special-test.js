@@ -48,6 +48,8 @@ export default function AddSpecialTest() {
       testConnections: filteredTests,
     };
 
+    setRowSelectionModel([]);
+    setTestName("");
     await saveItem(specialTestObject);
   };
 

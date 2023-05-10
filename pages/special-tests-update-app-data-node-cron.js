@@ -29,7 +29,7 @@ export async function getServerSideProps() {
       date3: { $exists: true },
     });
     if (!appVariable) {
-      return res.status(404).json({ message: "date2 not found" });
+      return res.status(404).json({ message: "date3 not found" });
     }
 
     // Use JSON.stringify() to convert date2 into a string

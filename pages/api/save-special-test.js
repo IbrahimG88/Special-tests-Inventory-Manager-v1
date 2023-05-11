@@ -10,7 +10,7 @@ export default async function handler(req, res) {
   const db = client.db();
 
   const specialTestObject = req.body;
-  const { testName, testConnections } = req.body;
+  const { specialTestName, testConnections } = req.body;
 
   try {
     console.log("from api object", req.body);
@@ -32,15 +32,16 @@ export default async function handler(req, res) {
     //The arrayFilters option specifies that the update should only be applied to elements
     // in the specialTestsList array where the specialTestName property is equal to "yourSpecialTestName".
     await collection.updateOne(
-      { "specialTestsList.testName": testName },
+      { "specialTestsList.specialTestName": specialTestName },
       {
         $set: {
           "specialTestsList.$[elem].testConnections":
             specialTestObject.testConnections,
+          "specialTestsList.$[elem].type": specialTestObject.type,
         },
       },
       {
-        arrayFilters: [{ "elem.testName": testName }],
+        arrayFilters: [{ "elem.specialTestName": specialTestName }],
       }
     );
 
@@ -49,7 +50,7 @@ export default async function handler(req, res) {
     //a document in the collection where no item in the specialTestsList array has a specialTestName property equal
     //to "yourSpecialTestName". The update operation uses the $push operator to add the specialTestObject to the end of the specialTestsList array.
     await collection.updateOne(
-      { "specialTestsList.testName": { $ne: testName } },
+      { "specialTestsList.specialTestName": { $ne: specialTestName } },
       {
         $push: { specialTestsList: specialTestObject },
       }

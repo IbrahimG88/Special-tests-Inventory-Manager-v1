@@ -5,7 +5,7 @@ import * as React from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 
 export default function AddSpecialTest() {
-  const [testName, setTestName] = useState("");
+  const [specialTestName, setSpecialTestName] = useState("");
 
   const [testsList, setTestsList] = useState([]);
   // select the rows item.id
@@ -36,7 +36,7 @@ export default function AddSpecialTest() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(testName);
+
     const filteredTests = testsList.filter((test) =>
       rowSelectionModel.includes(test.id)
     );
@@ -44,12 +44,13 @@ export default function AddSpecialTest() {
     setSelectedTests(filteredTests);
 
     const specialTestObject = {
-      testName: testName,
+      specialTestName: specialTestName,
       testConnections: filteredTests,
+      type: "special",
     };
 
     setRowSelectionModel([]);
-    setTestName("");
+    setSpecialTestName("");
     await saveItem(specialTestObject);
   };
 
@@ -87,8 +88,8 @@ export default function AddSpecialTest() {
       <input
         type="text"
         id="special-test-name"
-        value={testName}
-        onChange={(e) => setTestName(e.target.value)}
+        value={specialTestName}
+        onChange={(e) => setSpecialTestName(e.target.value)}
         className="border border-gray-300 rounded-md shadow-sm p-2"
       />
 
@@ -122,20 +123,3 @@ export default function AddSpecialTest() {
     </form>
   );
 }
-
-/*
-      <label htmlFor="connected-to-test-on-lis" className="text-lg font-medium">
-        Connected to test on LIS:
-      </label>
-      <Select
-        options={testsList.map((test) => ({
-          id: test.id,
-          value: test.testName,
-          label: test.testName,
-        }))}
-        value={{ value: connectedToTestOnLIS, label: connectedToTestOnLIS }}
-        onChange={(option) => setConnectedToTestOnLIS(option.value)}
-        isSearchable
-        className="border border-gray-300 rounded-md shadow-sm p-2"
-      />
-      */

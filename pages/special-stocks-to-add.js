@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetcher } from "../lib/fetcher";
 import Fuse from "fuse.js";
-import StocksForm from "../components/stocks-form-3";
+import StocksForm from "../components/special-stocks-form";
 
 import { useSession, signIn } from "next-auth/react";
 
@@ -53,6 +53,7 @@ export default function SpecialStocksToAdd() {
     console.log("item", item);
 
     setClickedItem(item);
+    console.log("handleClick item:", clickedItem);
   };
 
   const handleAddButton = () => {

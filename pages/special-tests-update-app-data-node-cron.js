@@ -5,7 +5,7 @@ import { connectToDatabase } from "../lib/db";
 import { getPreviousDate } from "../lib/helpers/get-set-dates";
 import { getNowDate } from "../lib/helpers/get-set-dates";
 import { getConsumptionData } from "../lib/helpers/get-consumption-data";
-import { subtractArrays } from "../lib/helpers/subtract-Consumption";
+import { subtractArrays } from "../lib/helpers/specialTests-subtract-Consumption";
 
 const inter = Inter({ subsets: ["latin"] });
 

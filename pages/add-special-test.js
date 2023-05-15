@@ -3,6 +3,7 @@ import Select from "react-select";
 import { fetcher } from "../lib/fetcher";
 import * as React from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
+import { v4 as uuidv4 } from "uuid";
 
 export default function AddSpecialTest() {
   const [specialTestName, setSpecialTestName] = useState("");
@@ -46,10 +47,11 @@ export default function AddSpecialTest() {
     setSelectedTests(filteredTests);
 
     const specialTestObject = {
+      id: uuidv4(), // generate a unique identifier
       specialTestName: specialTestName,
       testConnections: filteredTests,
       type: "special",
-      perPatient: perPatient,// can evaluate to true or false
+      perPatient: perPatient, // can evaluate to true or false
     };
 
     setRowSelectionModel([]);
@@ -95,7 +97,7 @@ export default function AddSpecialTest() {
         onChange={(e) => setSpecialTestName(e.target.value)}
         className="border border-gray-300 rounded-md shadow-sm p-2"
       />
-          <div className="flex items-center">
+      <div className="flex items-center">
         <label htmlFor="per-patient" className="text-lg font-medium mr-2">
           Deduct 1 per single patient registered:
         </label>

@@ -90,14 +90,16 @@ export default function OrderDetails({ selectedItems }) {
           {selectedItems &&
             selectedItems.map((item) => (
               <tr key={item.id}>
-                <td className="py-2 px-4">{item.testName}</td>
+                <td className="py-2 px-4">
+                  {item.testName ? item.testName : item.specialTestName}
+                </td>
                 <td className="py-2 px-4">{item.orderQuantity}</td>
                 <td className="py-2 px-4">
-                  {item.TotalStocks ? item.TotalStocks : parseInt(0)}
+                  {item.totalStocks ? item.totalStocks : parseInt(0)}
                 </td>
                 <td className="py-2 px-4">
-                  {item.TotalStocks
-                    ? parseInt(item.orderQuantity) + parseInt(item.TotalStocks)
+                  {item.totalStocks
+                    ? parseInt(item.orderQuantity) + parseInt(item.totalStocks)
                     : parseInt(item.orderQuantity)}
                 </td>
               </tr>

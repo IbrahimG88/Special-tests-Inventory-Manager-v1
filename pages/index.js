@@ -7,6 +7,8 @@ import CreateNewFolderOutlinedIcon from "@mui/icons-material/CreateNewFolderOutl
 import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
+import HistoryEduIcon from "@mui/icons-material/HistoryEdu";
 
 import { styled } from "@mui/material/styles";
 

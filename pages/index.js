@@ -74,6 +74,13 @@ export default function Home() {
               </Grid>
               <Grid item>
                 <Item>
+                  <Link href="/add-special-test">
+                    <AppRegistrationIcon /> Register Special Test
+                  </Link>
+                </Item>
+              </Grid>
+              <Grid item>
+                <Item>
                   <Link href="/stocks-to-add-3">
                     <AddShoppingCartOutlinedIcon />
                     Add Stocks
@@ -82,16 +89,8 @@ export default function Home() {
               </Grid>
               <Grid item>
                 <Item>
-                  <Link href="/add-special-test">
-                    <AddShoppingCartOutlinedIcon />
-                    Register Special Test
-                  </Link>
-                </Item>
-              </Grid>
-              <Grid item>
-                <Item>
                   <Link href="/special-stocks-to-add">
-                    <AddShoppingCartOutlinedIcon />
+                    <HistoryEduIcon />
                     Add Special Test Stocks
                   </Link>
                 </Item>

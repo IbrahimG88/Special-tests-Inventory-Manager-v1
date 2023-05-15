@@ -13,6 +13,7 @@ export default function AddSpecialTest() {
   const [selectedTests, setSelectedTests] = useState([]);
   const [specialTestObject, setSpecialTestObject] = useState([]);
   const [isUpdating, setIsUpdating] = useState(false);
+  const [perPatient, setPerPatient] = useState(false);
   const columns = [
     { field: "id", headerName: "ID", width: 70 },
     { field: "testName", headerName: "Test Name", width: 130 },
@@ -36,6 +37,7 @@ export default function AddSpecialTest() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("checked checkbox status", perPatient);
 
     const filteredTests = testsList.filter((test) =>
       rowSelectionModel.includes(test.id)
@@ -47,6 +49,7 @@ export default function AddSpecialTest() {
       specialTestName: specialTestName,
       testConnections: filteredTests,
       type: "special",
+      perPatient: perPatient,// can evaluate to true or false
     };
 
     setRowSelectionModel([]);
@@ -92,7 +95,18 @@ export default function AddSpecialTest() {
         onChange={(e) => setSpecialTestName(e.target.value)}
         className="border border-gray-300 rounded-md shadow-sm p-2"
       />
-
+          <div className="flex items-center">
+        <label htmlFor="per-patient" className="text-lg font-medium mr-2">
+          Deduct 1 per single patient registered:
+        </label>
+        <input
+          type="checkbox"
+          id="per-patient"
+          checked={perPatient}
+          onChange={(e) => setPerPatient(e.target.checked)}
+          className="h-5 w-5 text-blue-600 rounded-md border-gray-300 shadow-sm"
+        />
+      </div>
       <label
         htmlFor=" Choose single or multiple items from the table"
         className="text-lg font-medium"

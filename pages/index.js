@@ -57,7 +57,7 @@ export default function Home() {
           <Grid item xs={4}>
             <Grid container direction="column" spacing={2}>
               <Grid item>
-                <Link href="/mui-table-search">
+                <Link href="/mui-table-search-merged">
                   <Item>
                     <Inventory2OutlinedIcon />
                     Inventory
@@ -66,7 +66,7 @@ export default function Home() {
               </Grid>
               <Grid item>
                 <Item>
-                  <Link href="/expiree-notifications">
+                  <Link href="/expiree-notifications-merged">
                     <NotificationsOutlinedIcon />
                     Notifications
                   </Link>
@@ -82,7 +82,23 @@ export default function Home() {
               </Grid>
               <Grid item>
                 <Item>
-                  <Link href="/create-order">
+                  <Link href="/add-special-test">
+                    <AddShoppingCartOutlinedIcon />
+                    Register Special Test
+                  </Link>
+                </Item>
+              </Grid>
+              <Grid item>
+                <Item>
+                  <Link href="/special-stocks-to-add">
+                    <AddShoppingCartOutlinedIcon />
+                    Add Special Test Stocks
+                  </Link>
+                </Item>
+              </Grid>
+              <Grid item>
+                <Item>
+                  <Link href="/create-order-merged">
                     <CreateNewFolderOutlinedIcon />
                     Create Order
                   </Link>

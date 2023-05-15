@@ -25,6 +25,8 @@ import Link from "next/link";
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import { getSession } from "next-auth/react";
+import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
+import HistoryEduIcon from "@mui/icons-material/HistoryEdu";
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
@@ -81,12 +83,12 @@ export default function TemporaryDrawer() {
             {
               name: "Inventory",
               icon: <Inventory2OutlinedIcon />,
-              href: "./mui-table-search",
+              href: "./mui-table-search-merged",
             },
             {
               name: "Notification",
               icon: <NotificationsOutlinedIcon />,
-              href: "./expiree-notifications",
+              href: "./expiree-notifications-merged",
             },
             {
               name: "Add Stocks",
@@ -94,9 +96,19 @@ export default function TemporaryDrawer() {
               href: "./stocks-to-add-3",
             },
             {
+              name: " Add Special Test Stocks",
+              icon: <HistoryEduIcon />,
+              href: "./special-stocks-to-add",
+            },
+            {
+              name: "Register Special Test",
+              icon: <AppRegistrationIcon />,
+              href: "./add-special-test",
+            },
+            {
               name: "Create Order",
               icon: <CreateNewFolderOutlinedIcon />,
-              href: "./create-order",
+              href: "./create-order-merged",
             },
           ].map((item, index) => (
             <div key={item.name}>

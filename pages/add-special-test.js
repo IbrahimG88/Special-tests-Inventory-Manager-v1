@@ -4,8 +4,10 @@ import { fetcher } from "../lib/fetcher";
 import * as React from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { v4 as uuidv4 } from "uuid";
+import { useSession, signIn } from "next-auth/react";
 
 export default function AddSpecialTest() {
+  const { data: session } = useSession();
   const [specialTestName, setSpecialTestName] = useState("");
 
   const [testsList, setTestsList] = useState([]);
@@ -85,57 +87,71 @@ export default function AddSpecialTest() {
     }
   }
 
-  return (
-    <form className="flex flex-col space-y-4 p-4" onSubmit={handleSubmit}>
-      <label htmlFor="special-test-name" className="text-lg font-medium">
-        Special Test Name
-      </label>
-      <input
-        type="text"
-        id="special-test-name"
-        value={specialTestName}
-        onChange={(e) => setSpecialTestName(e.target.value)}
-        className="border border-gray-300 rounded-md shadow-sm p-2"
-      />
-      <div className="flex items-center">
-        <label htmlFor="per-patient" className="text-lg font-medium mr-2">
-          Deduct 1 per single patient registered:
+  if (session) {
+    return (
+      <form className="flex flex-col space-y-4 p-4" onSubmit={handleSubmit}>
+        <label htmlFor="special-test-name" className="text-lg font-medium">
+          Special Test Name
         </label>
         <input
-          type="checkbox"
-          id="per-patient"
-          checked={perPatient}
-          onChange={(e) => setPerPatient(e.target.checked)}
-          className="h-5 w-5 text-blue-600 rounded-md border-gray-300 shadow-sm"
+          type="text"
+          id="special-test-name"
+          value={specialTestName}
+          onChange={(e) => setSpecialTestName(e.target.value)}
+          className="border border-gray-300 rounded-md shadow-sm p-2"
         />
-      </div>
-      <label
-        htmlFor=" Choose single or multiple items from the table"
-        className="text-lg font-medium"
-      >
-        Choose single or multiple items from the table:
-      </label>
-      <div style={{ height: 400, width: "100%" }}>
-        <DataGrid
-          rows={testsList}
-          columns={columns}
-          pageSize={5}
-          rowsPerPageOptions={[5]}
-          checkboxSelection
-          slots={{ toolbar: GridToolbar }}
-          onRowSelectionModelChange={(newRowSelectionModel) => {
-            setRowSelectionModel(newRowSelectionModel);
-            console.log("newRowSelectionModel", newRowSelectionModel);
-          }}
-          rowSelectionModel={rowSelectionModel}
-        />
-      </div>
+        <div className="flex items-center">
+          <label htmlFor="per-patient" className="text-lg font-medium mr-2">
+            Deduct 1 per single patient registered:
+          </label>
+          <input
+            type="checkbox"
+            id="per-patient"
+            checked={perPatient}
+            onChange={(e) => setPerPatient(e.target.checked)}
+            className="h-5 w-5 text-blue-600 rounded-md border-gray-300 shadow-sm"
+          />
+        </div>
+        <label
+          htmlFor=" Choose single or multiple items from the table"
+          className="text-lg font-medium"
+        >
+          Choose single or multiple items from the table:
+        </label>
+        <div style={{ height: 400, width: "100%" }}>
+          <DataGrid
+            rows={testsList}
+            columns={columns}
+            pageSize={5}
+            rowsPerPageOptions={[5]}
+            checkboxSelection
+            slots={{ toolbar: GridToolbar }}
+            onRowSelectionModelChange={(newRowSelectionModel) => {
+              setRowSelectionModel(newRowSelectionModel);
+              console.log("newRowSelectionModel", newRowSelectionModel);
+            }}
+            rowSelectionModel={rowSelectionModel}
+          />
+        </div>
+        <button
+          type="submit"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded mx-auto focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+        >
+          Submit
+        </button>
+      </form>
+    );
+  }
+  //component code
+  return (
+    <div className="bg-white rounded-lg shadow-lg p-4">
+      <h2 className="text-lg font-bold mb-4">Please login to continue</h2>
       <button
-        type="submit"
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded mx-auto focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+        onClick={() => signIn()}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
       >
-        Submit
+        Login
       </button>
-    </form>
+    </div>
   );
 }

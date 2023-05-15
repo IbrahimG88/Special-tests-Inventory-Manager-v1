@@ -3,6 +3,10 @@
     {
       "path": "/special-tests-update-app-data-node-cron",
       "schedule": "0 * * * *"
+    },
+    {
+      "path": "/update-app-data-node-cron",
+      "schedule": "0 * * * *"
     }
   ]
 }

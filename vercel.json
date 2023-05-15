@@ -1,0 +1,8 @@
+{
+  "crons": [
+    {
+      "path": "/special-tests-update-app-data-node-cron",
+      "schedule": "0 * * * *"
+    }
+  ]
+}

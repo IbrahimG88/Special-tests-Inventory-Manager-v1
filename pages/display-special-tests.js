@@ -61,7 +61,7 @@ export default function DisplaySpecialTests() {
 
         <Typography>Special Tests List:</Typography>
         {filteredTestsList.map((item) => (
-          <Accordion key={item.id} className="bg-blue-200">
+          <Accordion key={item.id} className="bg-teal-100">
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
               <Typography>{item.specialTestName}</Typography>
             </AccordionSummary>

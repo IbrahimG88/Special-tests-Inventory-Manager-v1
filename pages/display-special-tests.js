@@ -40,13 +40,17 @@ export default function DisplaySpecialTests() {
 
   const handleSearch = (event) => {
     const query = event.target.value;
-    const results = fuse.search(query);
-    setFilteredTestsList(results.map((result) => result.item));
+    if (query === "") {
+      setFilteredTestsList(specialTestsList);
+    } else {
+      const results = fuse.search(query);
+      setFilteredTestsList(results.map((result) => result.item));
+    }
   };
 
   if (session) {
     return (
-      <div>
+      <div className="px-6">
         <TextField
           id="filled-search"
           label="Search Special Tests"
@@ -57,7 +61,7 @@ export default function DisplaySpecialTests() {
 
         <Typography>Special Tests List:</Typography>
         {filteredTestsList.map((item) => (
-          <Accordion key={item.id} className="bg-teal-100">
+          <Accordion key={item.id} className="bg-blue-200">
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
               <Typography>{item.specialTestName}</Typography>
             </AccordionSummary>

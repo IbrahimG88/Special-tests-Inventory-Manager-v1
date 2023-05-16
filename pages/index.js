@@ -57,7 +57,7 @@ export default function Home() {
     <div className="p-8">
       <Box sx={{ flexGrow: 1 }}>
         <Grid container justifyContent="center" spacing={2}>
-          <Grid item xs={4}>
+          <Grid item xs={12} sm={6} md={4}>
             <Grid container direction="column" spacing={2}>
               <Grid item>
                 <Link href="/mui-table-search-merged">

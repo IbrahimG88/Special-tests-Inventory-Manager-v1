@@ -8,16 +8,21 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import TextField from "@mui/material/TextField";
 
-export default function DisplaySpecialTestds() {
+import Fuse from "fuse.js";
+
+export default function DisplaySpecialTests() {
   const { data: session } = useSession();
   const [specialTestsList, setSpecialTestsList] = useState([]);
+  const [filteredTestsList, setFilteredTestsList] = useState([]);
 
   useEffect(() => {
     const fetchTestsList = async () => {
       const specialTestsData = await fetcher("/api/get-specialTestsList");
       if (specialTestsData) {
         setSpecialTestsList(specialTestsData);
+        setFilteredTestsList(specialTestsData);
       } else {
         console.error("Error fetching tests list from database");
       }
@@ -28,35 +33,46 @@ export default function DisplaySpecialTestds() {
     }
   }, []);
 
+  const fuse = new Fuse(specialTestsList, {
+    keys: ["specialTestName", "testConnections.testName"],
+    threshold: 0.3,
+  });
+
+  const handleSearch = (event) => {
+    const query = event.target.value;
+    const results = fuse.search(query);
+    setFilteredTestsList(results.map((result) => result.item));
+  };
+
   if (session) {
     return (
       <div>
-        <Typography variant="h6" gutterBottom className="px-6">
-          Special Tests List:
-        </Typography>
-        {specialTestsList.map((item) => (
+        <TextField
+          id="filled-search"
+          label="Search Special Tests"
+          type="search"
+          variant="filled"
+          onChange={handleSearch}
+        />
+
+        <Typography>Special Tests List:</Typography>
+        {filteredTestsList.map((item) => (
           <Accordion key={item.id} className="bg-teal-100">
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-              <Typography variant="h6" gutterBottom>
-                {item.specialTestName}
-              </Typography>
+              <Typography>{item.specialTestName}</Typography>
             </AccordionSummary>
             <AccordionDetails className="bg-lime-100">
-              <Typography>
-                <Typography variant="h6" gutterBottom>
-                  Test Connections:{" "}
-                </Typography>
+              <div>
+                <Typography>Test Connections: </Typography>
                 <Typography>
                   {item.perPatient ? "Deducts one Per Patient" : null}
                 </Typography>
                 {item.testConnections.map((testConnection) => (
                   <div key={testConnection.id}>
-                    <Typography variant="subtitle1" gutterBottom>
-                      {testConnection.testName}
-                    </Typography>
+                    <Typography>{testConnection.testName}</Typography>
                   </div>
                 ))}
-              </Typography>
+              </div>
             </AccordionDetails>
           </Accordion>
         ))}

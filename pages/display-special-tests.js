@@ -28,37 +28,50 @@ export default function DisplaySpecialTestds() {
     }
   }, []);
 
-  return (
-    <div>
-      <Typography variant="h6" gutterBottom className="px-6">
-        Special Tests List:
-      </Typography>
-      {specialTestsList.map((item) => (
-        <Accordion key={item.id} className="bg-teal-100">
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography variant="h6" gutterBottom>
-              {item.specialTestName}
-            </Typography>
-          </AccordionSummary>
-          <AccordionDetails className="bg-lime-100">
-            <Typography>
+  if (session) {
+    return (
+      <div>
+        <Typography variant="h6" gutterBottom className="px-6">
+          Special Tests List:
+        </Typography>
+        {specialTestsList.map((item) => (
+          <Accordion key={item.id} className="bg-teal-100">
+            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
               <Typography variant="h6" gutterBottom>
-                Test Connections:{" "}
+                {item.specialTestName}
               </Typography>
+            </AccordionSummary>
+            <AccordionDetails className="bg-lime-100">
               <Typography>
-                {item.perPatient ? "Deducts one Per Patient" : null}
+                <Typography variant="h6" gutterBottom>
+                  Test Connections:{" "}
+                </Typography>
+                <Typography>
+                  {item.perPatient ? "Deducts one Per Patient" : null}
+                </Typography>
+                {item.testConnections.map((testConnection) => (
+                  <div key={testConnection.id}>
+                    <Typography variant="subtitle1" gutterBottom>
+                      {testConnection.testName}
+                    </Typography>
+                  </div>
+                ))}
               </Typography>
-              {item.testConnections.map((testConnection) => (
-                <div key={testConnection.id}>
-                  <Typography variant="subtitle1" gutterBottom>
-                    {testConnection.testName}
-                  </Typography>
-                </div>
-              ))}
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
-      ))}
+            </AccordionDetails>
+          </Accordion>
+        ))}
+      </div>
+    );
+  }
+  return (
+    <div className="bg-white rounded-lg shadow-lg p-4">
+      <h2 className="text-lg font-bold mb-4">Please login to continue</h2>
+      <button
+        onClick={() => signIn()}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Login
+      </button>
     </div>
   );
 }

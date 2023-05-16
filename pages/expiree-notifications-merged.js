@@ -138,7 +138,7 @@ export default function StocksComponent({ data }) {
             {searchResults.map((item, itemIndex) => [
               <tr key={`${item.testName}-${itemIndex}`}>
                 <td className="border px-4 py-2 font-bold text-lg" colSpan={4}>
-                  {item.testName ? item.testName : item.specialTestName} :
+                  {item.testName ? item.testName : "* " + item.specialTestName}:
                 </td>
               </tr>,
               ...item.stocksArray.map((stock, stockIndex) => {

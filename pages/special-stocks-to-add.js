@@ -59,7 +59,10 @@ export default function SpecialStocksToAdd() {
   const handleAddButton = () => {
     setAddButton(!addButton);
   };
-  if (session) {
+  if (
+    session &&
+    (session.user.role === "super-user" || session.user.role === "admin")
+  ) {
     return (
       <div className="p-4">
         <h2 className="text-lg font-medium p-2"> Special Tests List</h2>
@@ -167,6 +170,7 @@ export default function SpecialStocksToAdd() {
   } //component code
   return (
     <div className="bg-white rounded-lg shadow-lg p-4">
+      <div className="text-lg font-bold mb-4">Not authorized</div>
       <h2 className="text-lg font-bold mb-4">Please login to continue</h2>
       <button
         onClick={() => signIn()}

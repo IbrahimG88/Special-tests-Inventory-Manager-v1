@@ -27,6 +27,7 @@ import { useSession } from "next-auth/react";
 import { getSession } from "next-auth/react";
 import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 import HistoryEduIcon from "@mui/icons-material/HistoryEdu";
+import ElectricBoltIcon from "@mui/icons-material/ElectricBolt";
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
@@ -104,6 +105,11 @@ export default function TemporaryDrawer() {
               name: "Register Special Test",
               icon: <AppRegistrationIcon />,
               href: "./add-special-test",
+            },
+            {
+              name: "Special Test List",
+              icon: <ElectricBoltIcon />,
+              href: "./display-special-tests",
             },
             {
               name: "Create Order",

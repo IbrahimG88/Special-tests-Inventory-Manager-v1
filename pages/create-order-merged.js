@@ -118,7 +118,7 @@ export default function CreateOrder() {
             {filteredInventory.map((item) => (
               <tr key={item.id}>
                 <td className="border px-4 py-2">
-                  {item.testName ? item.testName : item.specialTestName}
+                  {item.testName ? item.testName : "* " + item.specialTestName}
                 </td>
                 <td className="border px-4 py-2">{item.totalStocks}</td>
                 <td className="border px-4 py-2">

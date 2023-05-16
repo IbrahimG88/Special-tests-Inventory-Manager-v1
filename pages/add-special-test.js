@@ -87,7 +87,10 @@ export default function AddSpecialTest() {
     }
   }
 
-  if (session) {
+  if (
+    session &&
+    (session.user.role === "super-user" || session.user.role === "admin")
+  ) {
     return (
       <form className="flex flex-col space-y-4 p-4" onSubmit={handleSubmit}>
         <label htmlFor="special-test-name" className="text-lg font-medium">
@@ -116,7 +119,7 @@ export default function AddSpecialTest() {
           htmlFor=" Choose single or multiple items from the table"
           className="text-lg font-medium"
         >
-          Choose single or multiple items from the table:
+          Connect to single or multiple items from the table:
         </label>
         <div style={{ height: 400, width: "100%" }}>
           <DataGrid
@@ -145,6 +148,7 @@ export default function AddSpecialTest() {
   //component code
   return (
     <div className="bg-white rounded-lg shadow-lg p-4">
+      <div className="text-lg font-bold mb-4">Not authorized</div>
       <h2 className="text-lg font-bold mb-4">Please login to continue</h2>
       <button
         onClick={() => signIn()}

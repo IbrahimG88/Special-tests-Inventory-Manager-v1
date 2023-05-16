@@ -113,7 +113,9 @@ export default function CollapsibleTable() {
                     </IconButton>
                   </TableCell>
                   <TableCell component="th" scope="row">
-                    {item.testName ? item.testName : item.specialTestName}
+                    {item.testName
+                      ? item.testName
+                      : "* " + item.specialTestName}
                   </TableCell>
 
                   <TableCell>

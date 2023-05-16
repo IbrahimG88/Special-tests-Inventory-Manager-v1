@@ -9,6 +9,7 @@ import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 import HistoryEduIcon from "@mui/icons-material/HistoryEdu";
+import ElectricBoltIcon from "@mui/icons-material/ElectricBolt";
 
 import { styled } from "@mui/material/styles";
 
@@ -94,6 +95,14 @@ export default function Home() {
                   <Link href="/special-stocks-to-add">
                     <HistoryEduIcon />
                     Add Special Test Stocks
+                  </Link>
+                </Item>
+              </Grid>
+              <Grid item>
+                <Item>
+                  <Link href="/display-special-tests">
+                    <ElectricBoltIcon />
+                    Special Tests List
                   </Link>
                 </Item>
               </Grid>

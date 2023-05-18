@@ -67,6 +67,13 @@ export default function DisplaySpecialTests() {
             </AccordionSummary>
             <AccordionDetails className="bg-lime-100">
               <div>
+                {item.totalStocks ? (
+                  <>
+                    <Typography>Total Stocks: {item.totalStocks}</Typography>
+                    <hr />
+                    <br />
+                  </>
+                ) : null}
                 <Typography>Test Connections: </Typography>
                 <Typography>
                   {item.perPatient ? "Deducts one Per Patient" : null}

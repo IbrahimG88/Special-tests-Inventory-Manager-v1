@@ -51,7 +51,7 @@ export default function PopulateTestsList() {
     const test = { id: id, testName: testName };
 
     const res = await fetch("/api/delete-test/", {
-      method: "DELETE",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },

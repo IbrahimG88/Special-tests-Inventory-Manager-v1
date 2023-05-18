@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { fetcher } from "../lib/fetcher";
 import { Button } from "@mui/material";
 import { useSession, signIn } from "next-auth/react";
+import PopulateTestsList from "./poppulate-tests-list";
 
 export default function Settings() {
   const { data: session } = useSession();
@@ -100,6 +101,7 @@ export default function Settings() {
             Update or Upload TestsList
           </Button>
         </div>
+        <PopulateTestsList />
       </>
     );
   } //component code

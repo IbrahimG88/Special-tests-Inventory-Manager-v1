@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Select from "react-select";
 import { fetcher } from "../lib/fetcher";
 import * as React from "react";
@@ -17,6 +17,7 @@ export default function AddSpecialTest() {
   const [specialTestObject, setSpecialTestObject] = useState([]);
   const [isUpdating, setIsUpdating] = useState(false);
   const [perPatient, setPerPatient] = useState(false);
+
   const columns = [
     { field: "id", headerName: "ID", width: 70 },
     { field: "testName", headerName: "Test Name", width: 130 },
@@ -58,6 +59,7 @@ export default function AddSpecialTest() {
 
     setRowSelectionModel([]);
     setSpecialTestName("");
+    setPerPatient(false);
     await saveItem(specialTestObject);
   };
 

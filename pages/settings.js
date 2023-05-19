@@ -98,7 +98,7 @@ export default function Settings() {
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg"
             onClick={handlePopulate}
           >
-            Update or Upload TestsList
+            Reset TestsList on Mongo
           </Button>
         </div>
         <PopulateTestsList />

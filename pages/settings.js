@@ -82,6 +82,10 @@ export default function Settings() {
   if (session && session.user.role === "super-user") {
     return (
       <>
+        <h1 className="p-4">
+          If you added or deleted tests on LIS add them or delete them manually
+          on Mongo...
+        </h1>
         {testsList.length > 0 ? (
           <h1 className="p-4">
             Number of tests in Inventory: {testsList.length}
@@ -101,6 +105,7 @@ export default function Settings() {
             Reset TestsList on Mongo
           </Button>
         </div>
+
         <PopulateTestsList />
       </>
     );

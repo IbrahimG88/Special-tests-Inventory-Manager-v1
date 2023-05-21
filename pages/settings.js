@@ -98,7 +98,9 @@ export default function Settings() {
     }));
 
     const addedTests = transformedTestsList.filter((test) => {
-      return !inventory.some((inventoryTest) => inventoryTest.id === test.id);
+      return !inventory.some(
+        (inventoryTest) => inventoryTest.testName === test.testName
+      );
     });
     console.log("addedTests", addedTests);
     console.log("inventory", inventory);

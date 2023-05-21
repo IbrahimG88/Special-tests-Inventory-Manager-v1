@@ -1,4 +1,4 @@
-import { Inventory, NavigateNext } from "@mui/icons-material";
+import { Inventory, NavigateNext, Tram } from "@mui/icons-material";
 import { useState, useEffect } from "react";
 import { fetcher } from "../lib/fetcher";
 import { Button } from "@mui/material";
@@ -79,6 +79,32 @@ export default function Settings() {
     }
   };
 
+  /// Updating the mongo list with the tests from LIS functionality:
+  // we have inventory: from mongo collection and testsList or transformedTestsList: from lis
+  // 1. if tests were added from lis: variable: find tests in testsList that are not in inventory
+  // 2. if tests were deleted from lis: variable: find tests in inventory that are not in testsList
+  // 1. send these additional tests to api and add them to mongo list
+  // 2. send these deleted tests to api and delete them from mongo list
+  // 2. to test: delete some tests manually from settings component which mimics deletion from lis
+
+  // 1. if tests were added from lis: variable: find tests in testsList that are not in inventory:
+  // to test: delete some tests manually from mongo
+  const addedTests = async () => {
+    const data = await fetcher(`http://197.45.107.206/api2/integration/tests`);
+
+    const transformedTestsList = Object.entries(data).map(([key, value]) => ({
+      id: value.profile_id,
+      testName: value.report_name,
+    }));
+
+    const addedTests = transformedTestsList.filter((test) => {
+      return !inventory.some((inventoryTest) => inventoryTest.id === test.id);
+    });
+    console.log("addedTests", addedTests);
+    console.log("inventory", inventory);
+    console.log("transformedTestsList", transformedTestsList);
+  };
+
   if (session && session.user.role === "super-user") {
     return (
       <>
@@ -103,6 +129,12 @@ export default function Settings() {
             onClick={handlePopulate}
           >
             Reset TestsList on Mongo
+          </Button>
+          <Button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg"
+            onClick={addedTests}
+          >
+            AddedTests
           </Button>
         </div>
 

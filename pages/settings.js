@@ -135,8 +135,9 @@ export default function Settings() {
     return (
       <>
         <h1 className="p-4">
-          If you added or deleted tests on LIS add them or delete them manually
-          on Mongo...
+          Use this component manually to add or remove tests or add the whole
+          testsList, will only reset the testsList if there were zero tests in
+          mongodb in testsList.
         </h1>
         {testsList.length > 0 ? (
           <h1 className="p-4">

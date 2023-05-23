@@ -122,9 +122,12 @@ export default function Settings() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ addedTests: addedTests }),
       });
-    }
-
-    if (removeTestsFromMongo > 0) {
+    } else if (removeTestsFromMongo.length > 0) {
+      const response = await fetch("/api/removeTestsFromMongo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ removeTestsFromMongo: removeTestsFromMongo }),
+      });
     }
   };
 
@@ -157,7 +160,7 @@ export default function Settings() {
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg"
             onClick={updateTests}
           >
-            AddedTests
+            Update Tests List bidirectional
           </Button>
         </div>
 

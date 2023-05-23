@@ -149,13 +149,14 @@ export default function Settings() {
             Number of tests in Inventory: {inventory.length}
           </h1>
         )}
-        <div className="flex justify-center">
+        <div className="flex justify-center space-x-4">
           <Button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg"
             onClick={handlePopulate}
           >
             Reset TestsList on Mongo
           </Button>
+
           <Button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg"
             onClick={updateTests}

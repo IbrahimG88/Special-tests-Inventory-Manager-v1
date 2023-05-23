@@ -57,9 +57,9 @@ export default function Home() {
     <div className="p-8">
       <Box sx={{ flexGrow: 1 }}>
         <Grid container justifyContent="center" spacing={2}>
-          <Grid item xs={12} sm={6} md={4}>
+          <Grid item="true" xs={12} sm={6} md={4}>
             <Grid container direction="column" spacing={2}>
-              <Grid item>
+              <Grid item="true">
                 <Link href="/mui-table-search-merged">
                   <Item>
                     <Inventory2OutlinedIcon />
@@ -67,7 +67,7 @@ export default function Home() {
                   </Item>
                 </Link>
               </Grid>
-              <Grid item>
+              <Grid item="true">
                 <Item>
                   <Link href="/expiree-notifications-merged">
                     <NotificationsOutlinedIcon />
@@ -75,14 +75,14 @@ export default function Home() {
                   </Link>
                 </Item>
               </Grid>
-              <Grid item>
+              <Grid item="true">
                 <Item>
                   <Link href="/add-special-test">
                     <AppRegistrationIcon /> Register Special Test
                   </Link>
                 </Item>
               </Grid>
-              <Grid item>
+              <Grid item="true">
                 <Item>
                   <Link href="/stocks-to-add-3">
                     <AddShoppingCartOutlinedIcon />
@@ -90,7 +90,7 @@ export default function Home() {
                   </Link>
                 </Item>
               </Grid>
-              <Grid item>
+              <Grid item="true">
                 <Item>
                   <Link href="/special-stocks-to-add">
                     <HistoryEduIcon />
@@ -98,7 +98,7 @@ export default function Home() {
                   </Link>
                 </Item>
               </Grid>
-              <Grid item>
+              <Grid item="true">
                 <Item>
                   <Link href="/display-special-tests">
                     <ElectricBoltIcon />
@@ -106,7 +106,7 @@ export default function Home() {
                   </Link>
                 </Item>
               </Grid>
-              <Grid item>
+              <Grid item="true">
                 <Item>
                   <Link href="/create-order-merged">
                     <CreateNewFolderOutlinedIcon />
@@ -114,7 +114,7 @@ export default function Home() {
                   </Link>
                 </Item>
               </Grid>
-              <Grid item>
+              <Grid item="true">
                 <Item>
                   <Link href="/settings">
                     <SettingsOutlinedIcon />

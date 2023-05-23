@@ -102,9 +102,19 @@ export default function Settings() {
         (inventoryTest) => inventoryTest.testName === test.testName
       );
     });
+
+    // 2. if tests were deleted from lis: variable: find tests in inventory that are not in testsList
+    // to test add manually some tests to mongo testsList
+    const removeTestsFromMongo = inventory.filter((test) => {
+      return !transformedTestsList.some(
+        (transformedTest) => transformedTest.testName === test.testName
+      );
+    });
+
     console.log("addedTests", addedTests);
     console.log("inventory", inventory);
     console.log("transformedTestsList", transformedTestsList);
+    console.log("removeTestsFromMongo", removeTestsFromMongo);
   };
 
   if (session && session.user.role === "super-user") {

@@ -89,7 +89,7 @@ export default function Settings() {
 
   // 1. if tests were added from lis: variable: find tests in testsList that are not in inventory:
   // to test: delete some tests manually from mongo
-  const addedTests = async () => {
+  const updateTests = async () => {
     const data = await fetcher(`http://197.45.107.206/api2/integration/tests`);
 
     const transformedTestsList = Object.entries(data).map(([key, value]) => ({
@@ -115,6 +115,17 @@ export default function Settings() {
     console.log("inventory", inventory);
     console.log("transformedTestsList", transformedTestsList);
     console.log("removeTestsFromMongo", removeTestsFromMongo);
+
+    if (addedTests.length > 0) {
+      const response = await fetch("/api/addedTests", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ addedTests: addedTests }),
+      });
+    }
+
+    if (removeTestsFromMongo > 0) {
+    }
   };
 
   if (session && session.user.role === "super-user") {
@@ -144,7 +155,7 @@ export default function Settings() {
           </Button>
           <Button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg"
-            onClick={addedTests}
+            onClick={updateTests}
           >
             AddedTests
           </Button>

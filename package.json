@@ -19,6 +19,7 @@
     "dot-env": "^0.0.1",
     "fetch": "^1.1.0",
     "fuse.js": "^6.6.2",
+    "isomorphic-unfetch": "^4.0.2",
     "mongodb": "^5.2.0",
     "next": "13.3.0",
     "next-auth": "^4.22.1",

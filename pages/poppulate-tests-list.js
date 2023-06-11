@@ -7,7 +7,7 @@ export default function PopulateTestsList() {
   const [testsList, setTestsList] = useState([]);
 
   const handlePopulate = async () => {
-    const data = await fetcher(`http://196.219.64.243//api2/integration/tests`);
+    const data = await fetcher(`http://196.219.64.243/api2/integration/tests`);
 
     const transformedTestsList = Object.entries(data).map(([key, value]) => ({
       id: value.profile_id,

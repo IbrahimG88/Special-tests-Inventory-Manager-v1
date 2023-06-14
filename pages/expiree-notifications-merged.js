@@ -104,12 +104,12 @@ export default function StocksComponent({ data }) {
             onClick={() => setExpiryFilter(30)}
             disabled={showAll}
             className={`${
-              expiryFilter === 30
+              showAll
+                ? "bg-gray-400"
+                : expiryFilter === 30
                 ? "bg-green-500 hover:bg-green-600"
                 : "bg-blue-500 hover:bg-blue-600"
-            } mb-2 text-white px-4 py-2 rounded-md mr-2  focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50 ${
-              showAll ? "bg-gray-400" : ""
-            }`}
+            } mb-2 text-white px-4 py-2 rounded-md mr-2 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50`}
           >
             1 Month till Expiry
           </button>
@@ -117,12 +117,12 @@ export default function StocksComponent({ data }) {
             onClick={() => setExpiryFilter(60)}
             disabled={showAll}
             className={`${
-              expiryFilter === 60
+              showAll
+                ? "bg-gray-400"
+                : expiryFilter === 60
                 ? "bg-green-500 hover:bg-green-600"
                 : "bg-blue-500 hover:bg-blue-600"
-            } mb-2 text-white px-4 py-2 rounded-md mr-2 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50 ${
-              showAll ? "bg-gray-400" : ""
-            }`}
+            } mb-2 text-white px-4 py-2 rounded-md mr-2 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50`}
           >
             2 Months till Expiry
           </button>

@@ -99,30 +99,42 @@ export default function StocksComponent({ data }) {
           />
           <SearchIcon className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400" />
         </div>
-        <div className="mt-4">
+        <div className="mt-4 flex flex-wrap">
           <button
             onClick={() => setExpiryFilter(30)}
+            disabled={showAll}
             className={`${
-              expiryFilter === 30 ? "bg-green-500" : "bg-blue-500"
-            } text-white px-4 py-2 rounded-md mr-2 hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50`}
+              expiryFilter === 30
+                ? "bg-green-500 hover:bg-green-600"
+                : "bg-blue-500 hover:bg-blue-600"
+            } mb-2 text-white px-4 py-2 rounded-md mr-2  focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50 ${
+              showAll ? "bg-gray-400" : ""
+            }`}
           >
             1 Month till Expiry
           </button>
           <button
             onClick={() => setExpiryFilter(60)}
+            disabled={showAll}
             className={`${
-              expiryFilter === 60 ? "bg-green-500" : "bg-blue-500"
-            } text-white px-4 py-2 rounded-md mr-2 hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50`}
+              expiryFilter === 60
+                ? "bg-green-500 hover:bg-green-600"
+                : "bg-blue-500 hover:bg-blue-600"
+            } mb-2 text-white px-4 py-2 rounded-md mr-2 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50 ${
+              showAll ? "bg-gray-400" : ""
+            }`}
           >
             2 Months till Expiry
           </button>
           <button
             onClick={() => setShowAll(!showAll)}
             className={`${
-              showAll ? "bg-green-500" : "bg-blue-500"
-            } text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50`}
+              showAll
+                ? "bg-green-500 hover:bg-green-600"
+                : "bg-blue-500 hover:bg-blue-600"
+            } mb-2 text-white px-4 py-2 rounded-md focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50`}
           >
-            {showAll ? "Hide All" : "Show All"}
+            {showAll ? "All Inventory: On" : "All Inventory: Off"}
           </button>
         </div>
         <table className="table-auto w-full mt-4">

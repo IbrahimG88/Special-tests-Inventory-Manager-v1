@@ -5,7 +5,7 @@ import { connectToDatabase } from "../lib/db";
 import { getPreviousDate } from "../lib/helpers/get-set-dates";
 import { getNowDate } from "../lib/helpers/get-set-dates";
 import { getConsumptionData } from "../lib/helpers/get-consumption-data";
-import { subtractArrays } from "../lib/helpers/subtract-Consumption";
+import { subtractArrays } from "../lib/helpers/specialTests-subtract-Consumption";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,22 +18,25 @@ export async function getServerSideProps() {
     const client = await connectToDatabase();
     const db = client.db("myFirstDatabase");
     const collectionAppVariables = db.collection("appVariables");
-    const collectionInventory2 = db.collection("canal_inventory");
+    //todo prod: add collectionInventory2
+    const collectionSpecialTests = db.collection("special_tests");
 
     // for more processing add another const collectionInventory2 = db.collection("inventory2");
 
     // Find one document in appVariables collection where date2 exists
+    //todo prod: use here date3 to use it for this component same value as date2
     const appVariable = await collectionAppVariables.findOne({
-      canalDateBranch1: { $exists: true },
+      date3: { $exists: true },
     });
     if (!appVariable) {
-      return res.status(404).json({ message: "date2 not found" });
+      return res.status(404).json({ message: "date3 not found" });
     }
 
     // Use JSON.stringify() to convert date2 into a string
-    const dateValue = JSON.stringify(appVariable.canalDateBranch1);
+    //todo prod: change test-date to date3
+    const dateValue = JSON.stringify(appVariable.date3);
 
-    const testsListFromMongo = await collectionInventory2.findOne({});
+    const testsListFromMongo = await collectionSpecialTests.findOne({});
     if (!testsListFromMongo) {
       return res.status(404).json({ message: "testsList not loaded" });
     }
@@ -51,8 +54,8 @@ export async function getServerSideProps() {
       // set Mongo Date to now add a conditional later to only update the date if the data in mongo was updated  also here in getServerSideProps
       // if no date2 was found set the date2 value to now
       const nowDate = await collectionAppVariables.updateOne(
-        { canalDateBranch1: { $exists: true } },
-        { $currentDate: { canalDateBranch1: true } },
+        { date3: { $exists: true } },
+        { $currentDate: { date3: true } },
         { upsert: true }
       );
       if (!nowDate) {
@@ -70,9 +73,22 @@ export async function getServerSideProps() {
     );
 
     // update the testsList in MongoDB with the updated consumption
+    /*
     const query = { testsList: { $exists: true } };
     const updateDocument = { $set: { testsList: applyConsumptionToMongoData } };
     const result = await collectionInventory2.updateOne(query, updateDocument);
+    client.close();
+*/
+    //
+    // update the specialTestsList in MongoDB with the updated consumption added this code here:
+    const query = { specialTestsList: { $exists: true } };
+    const updateDocument = {
+      $set: { specialTestsList: applyConsumptionToMongoData },
+    };
+    const result = await collectionSpecialTests.updateOne(
+      query,
+      updateDocument
+    );
     client.close();
 
     return {

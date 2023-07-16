@@ -12,7 +12,7 @@ export default async function handler(req, res) {
   const db = client.db();
 
   try {
-    const collection = db.collection("canal_inventory");
+    const collection = db.collection("inventory2");
     const result = await collection.updateOne(
       { testsList: { $exists: true } },
       { $addToSet: { testsList: { $each: addedTests } } }

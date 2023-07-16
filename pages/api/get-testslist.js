@@ -8,7 +8,7 @@ export default async function handler(req, res) {
 
     const client = await connectToDatabase();
     const db = client.db("myFirstDatabase");
-    const collection = db.collection("canal_inventory");
+    const collection = db.collection("inventory2");
 
     const existingTestsList = await collection.findOne({});
     if (!existingTestsList) {

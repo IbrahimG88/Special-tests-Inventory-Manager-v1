@@ -13,7 +13,7 @@ export default async function handler(req, res) {
   const db = client.db();
 
   try {
-    const collection = db.collection("canal_inventory_special_tests");
+    const collection = db.collection("special_tests");
     const filter = { "specialTestsList.specialTestName": specialTestName };
     const update = {
       $set: {

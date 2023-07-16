@@ -147,21 +147,6 @@ export default function TemporaryDrawer() {
             },
           ].map((item, index, icon) => (
             <div key={item.name}>
-              <Link href={item.href}>
-                <ListItem
-                  button
-                  key={item.name}
-                  sx={{
-                    borderRadius: "10px",
-                    marginBottom: "10px",
-                  }}
-                  className="hover:bg-amber-200 hover:text-black"
-                  onClick={toggleDrawer(false)}
-                >
-                  <ListItemIcon>{item.icon}</ListItemIcon>
-                  <ListItemText primary={item.name} />
-                </ListItem>
-              </Link>
               <ListItem
                 button
                 key={item.name}

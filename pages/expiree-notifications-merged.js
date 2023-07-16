@@ -10,14 +10,16 @@ export async function getServerSideProps() {
     const client = await connectToDatabase();
     const db = client.db("myFirstDatabase");
 
-    const collectionInventory2 = db.collection("inventory2");
+    const collectionInventory2 = db.collection("canal_inventory");
     const testsListFromMongo = await collectionInventory2.findOne({});
     if (!testsListFromMongo) {
       return res.status(404).json({ message: "testsList not loaded " });
     }
     console.log("testsList", testsListFromMongo.testsList);
 
-    const collectionSpecialTests = db.collection("special_tests");
+    const collectionSpecialTests = db.collection(
+      "canal_inventory_special_tests"
+    );
     const specialTestsListFromMongo = await collectionSpecialTests.findOne({});
     if (!specialTestsListFromMongo) {
       return res.status(404).json({ message: "specialtestsList not loaded" });

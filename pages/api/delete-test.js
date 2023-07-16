@@ -8,7 +8,7 @@ export default async function handler(req, res) {
 
     const client = await connectToDatabase();
     const db = client.db("myFirstDatabase");
-    const collection = db.collection("inventory2");
+    const collection = db.collection("canal_inventory");
 
     const { id, testName } = req.body;
 

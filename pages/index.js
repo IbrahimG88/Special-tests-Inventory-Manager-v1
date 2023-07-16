@@ -114,14 +114,6 @@ export default function Home() {
                   </Item>
                 </Link>
               </Grid>
-              <Grid item="true">
-                <Link href="/settings">
-                  <Item>
-                    <SettingsOutlinedIcon />
-                    Settings
-                  </Item>
-                </Link>
-              </Grid>
             </Grid>
           </Grid>
         </Grid>

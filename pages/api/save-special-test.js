@@ -14,7 +14,7 @@ export default async function handler(req, res) {
 
   try {
     console.log("from api object", req.body);
-    const collection = db.collection("special_tests");
+    const collection = db.collection("canal_inventory_special_tests");
 
     // Check if the array exists
     const result = await collection.findOne({

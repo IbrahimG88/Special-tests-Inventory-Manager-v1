@@ -42,7 +42,7 @@ export default function Settings() {
   //fetch data from LIS
 
   const handlePopulate = async () => {
-    const data = await fetcher(`http://196.219.64.243/api2/integration/tests`);
+    const data = await fetcher(`https://canallab.com/api3/integration/tests`);
 
     const transformedTestsList = Object.entries(data).map(([key, value]) => ({
       id: value.profile_id,
@@ -90,7 +90,7 @@ export default function Settings() {
   // 1. if tests were added from lis: variable: find tests in testsList that are not in inventory:
   // to test: delete some tests manually from mongo
   const updateTests = async () => {
-    const data = await fetcher(`http://196.219.64.243/api2/integration/tests`);
+    const data = await fetcher(`https://canallab.com/api3/integration/tests`);
 
     const transformedTestsList = Object.entries(data).map(([key, value]) => ({
       id: value.profile_id,

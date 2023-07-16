@@ -28,7 +28,7 @@ export default NextAuth({
         const client = await connectToDatabase();
         const db = client.db("myFirstDatabase");
 
-        const usersCollection = db.collection("users2");
+        const usersCollection = db.collection("canal_lab_users");
 
         const user = await usersCollection.findOne({
           email: credentials.username,
